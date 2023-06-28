@@ -12,7 +12,7 @@ import MenuCard from './MenuCard'
 import { exreciseContext } from '../context/ExerciseContext'
 
 const menu = [
-    { id: 1, img: thigh,title:"thigh" },
+    { id: 1, img: thigh,title:"upper legs" },
     { id: 2, img: bicep,title:"bicep" },
     { id: 3, img: chest,title:"chest" },
     { id: 4, img: leg,title:"leg" },
