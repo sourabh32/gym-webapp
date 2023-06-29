@@ -1,7 +1,7 @@
 import { Box,Image,Text,Badge } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import muscle from "../assets/muscle.png"
 const ExerciseCard = ({name,img,bodyPart,equipment,id}) => {
   return (
     <Link to={`/exercise/${id}`}>
@@ -20,9 +20,12 @@ const ExerciseCard = ({name,img,bodyPart,equipment,id}) => {
     
   >
     <Image
-    loading='lazy'
     
-      src={img}
+    style={{loading:"lazy"}}
+    
+    
+
+src={img? img:muscle}
       alt="Exercise Image"
     />
     <Text

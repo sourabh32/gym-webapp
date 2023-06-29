@@ -10,6 +10,9 @@
 body,html{
   font-family: 'Poppins', sans-serif;
 }
+h1,h2{
+  font-family: "poppins";
+}
 
 body::-webkit-scrollbar{
   display: none;
