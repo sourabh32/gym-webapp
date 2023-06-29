@@ -34,10 +34,8 @@ const {setInputTerm} = useContext(exreciseContext)
       <Heading color="#435B66" as="h2" size="xl" mb={4}>
         Search Exercises
       </Heading>
-      <Input bgColor={"gray.200"} w={['100%', '50%']} placeholder="Search for an exercise" size="sm" mb={6} onChange={(e) => setInputTerm(e.target.value.toLowerCase())} />
-      <Button  colorScheme="blue" size="sm"  >
-        Search
-      </Button>
+      <Input bgColor={"gray.200"} w={"100%"} placeholder="Search for an exercise..." size="sm" mb={6} onChange={(e) => setInputTerm(e.target.value.toLowerCase())} />
+     
     </Container>
 
     <Container mt={10}  maxW="container.lg">

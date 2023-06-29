@@ -3,20 +3,24 @@ import { exercises } from "../utils/exercisesData";
 import axios from "axios";
 import { exerciseOptions } from "../utils/apiOptions";
 export const exreciseContext = createContext({
-  fetchedExercise: exercises,
-  setInputTerm:"",
-  displayExercise:exercises
+  fetchedExercise: [],
+  setInputTerm: "",
+  displayExercise: [],
+  exerciseToDisplay:[],
+  exerciseId:0
 });
 
 export const ExreciseProvider = ({ children }) => {
-  const [fetchedExercise, setFetchedExrecise] = useState(exercises);
-  const [inputTerm,setInputTerm] = useState("")
-  const [displayExercise,setDisplayExercise] = useState(fetchedExercise)
+  const [fetchedExercise, setFetchedExrecise] = useState([]);
+  const [inputTerm, setInputTerm] = useState("");
+  const [displayExercise, setDisplayExercise] = useState(fetchedExercise);
+ 
+  
 
-
+  
   const handleSearch = () => {
-    if(inputTerm === ""){
-      setDisplayExercise(fetchedExercise)
+    if (inputTerm === "") {
+      setDisplayExercise(fetchedExercise);
     }
     const searchedItem = fetchedExercise.filter(
       (exercise) =>
@@ -25,26 +29,20 @@ export const ExreciseProvider = ({ children }) => {
         exercise.equipment.toLowerCase().includes(inputTerm) ||
         exercise.bodyPart.toLowerCase().includes(inputTerm)
     );
-    setDisplayExercise(searchedItem)
-  
-  }
+    setDisplayExercise(searchedItem);
+  };
 
+ 
 
-  
+ 
 
-  useEffect(()=>{
-    if(inputTerm !== ""){
-      handleSearch()
-    }
-
-  },[inputTerm])
 
   useEffect(() => {
     const fetchExrecise = async (options) => {
       try {
         const { data } = await axios.request(options);
         setFetchedExrecise(data);
-        setDisplayExercise(data)
+        setDisplayExercise(data);
       } catch (error) {
         console.error(error);
       }
@@ -52,7 +50,16 @@ export const ExreciseProvider = ({ children }) => {
 
     fetchExrecise(exerciseOptions);
   }, []);
-  const value = { fetchedExercise,setInputTerm,displayExercise };
+  useEffect(() => {
+    if (inputTerm !== "") {
+      handleSearch();
+    }
+  }, [inputTerm]);
+
+  
+
+ 
+  const value = { fetchedExercise, setInputTerm, displayExercise, };
   return (
     <exreciseContext.Provider value={value}>
       {children}

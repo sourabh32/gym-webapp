@@ -1,14 +1,16 @@
 import { Box,Image,Text,Badge } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const ExerciseCard = ({name,img,bodyPart,equipment}) => {
+const ExerciseCard = ({name,img,bodyPart,equipment,id}) => {
   return (
+    <Link to={`/exercise/${id}`}>
     <Box
     position="relative"
     borderRadius={10}
     transition="0.3s"
     cursor="pointer"
-    bgColor="gray.300"
+    
     _hover={{
       transform: 'scale(1.05)',
       border: "1px solid blue"
@@ -19,7 +21,7 @@ const ExerciseCard = ({name,img,bodyPart,equipment}) => {
   >
     <Image
     loading='lazy'
-      mixBlendMode="color-burn"
+    
       src={img}
       alt="Exercise Image"
     />
@@ -57,6 +59,7 @@ const ExerciseCard = ({name,img,bodyPart,equipment}) => {
       {equipment}
     </Badge>
   </Box>
+  </Link>
   )
 }
 
