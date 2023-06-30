@@ -10,11 +10,12 @@ function Header() {
       w="100%"
       p={2}
      
-      boxShadow="sm"
       zIndex={10}
     >
       <Link to="/">
       <Image
+       transition="0.3s"
+       className='shadow'
       borderRadius={"50%"} src={back} alt="Logo" h={8}
        />
       </Link>

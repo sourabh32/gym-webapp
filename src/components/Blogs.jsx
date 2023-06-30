@@ -1,45 +1,53 @@
 import React, { useEffect } from 'react'
 import { blogOptions } from '../utils/apiOptions'
 import axios from 'axios'
-import { Box, HStack, Heading, Image,Text } from '@chakra-ui/react'
+import { Box, Heading, Text } from '@chakra-ui/react'
 import { useState } from 'react'
-import muscle from "../assets/muscle.png"
+
+import SpinnerComp from './Spinner'
+import BlogCard from './BlogCard'
+
+
+
 const Blogs = ({search}) => {
 const [blogs,setBlogs] = useState([])
+const [loading,setLoading] = useState(true)
+
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        
         const response = await axios.request(blogOptions(search));
         const data = response.data;
-        console.log(data.data.organic_results)
+        
         setBlogs(data.data.organic_results);
+        setLoading(false)
         
       } catch (error) {
         console.error(error);
+        setLoading(false)
       }
     };
 
     fetchData();
   }, [search]);
-console.log(blogs)
+
   return (
     <Box  w="full">
 
-      <Text ml={5} fontSize={"1rem"} >Related article's</Text>
+      <Heading color="#435B66" mx={5}  my={5} fontFamily={"poppins"} >Related article's</Heading>
 
-        { blogs.length>0 &&     blogs.slice(1,3).map((blog) => (
+
+
+{
+loading ? (<SpinnerComp />) : blogs.length >0 ? (blogs.slice(1,3).map(({url,desc,title}) => (
                 
-        <HStack  key={blog.url} borderWidth="1px" borderRadius="md" p={4} mb={4}>
-          <Image w="10" h="10" src={muscle} alt="Featured" />
-          <a href={`${blog.url}`} target='_blank'>
-          <Box>
-          <Heading   as="h2" size="md" my={2}>{blog.title}</Heading>
-          <Text lineHeight={1}>{blog.desc}</Text>
-          </Box>
-          </a>
-        </HStack>
-      ))
-        }
+  <BlogCard url={url} key={desc} desc={desc} title={title} />
+))) : (<Text mx={5}>Api request's exhausted 😭</Text>)
+}
+       
     </Box>
 
   )

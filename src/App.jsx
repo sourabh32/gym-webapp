@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Home from "./routes/Home"
 import ExerciseDetail from "./routes/ExerciseDetail"
 import Header from "./components/Header"
+import Footer from "./components/Footer"
 
 
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/exercise/:id" element={<ExerciseDetail />} />
       </Routes> 
+      <Footer />
     </Router>
     
 

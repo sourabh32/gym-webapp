@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { exercises } from "../utils/exercisesData";
+
 import axios from "axios";
 import { exerciseOptions } from "../utils/apiOptions";
 export const exreciseContext = createContext({
@@ -7,21 +7,25 @@ export const exreciseContext = createContext({
   setInputTerm: "",
   displayExercise: [],
   exerciseToDisplay:[],
-  exerciseId:0
+  exerciseId:0,
+  loading:true
 });
 
 export const ExreciseProvider = ({ children }) => {
   const [fetchedExercise, setFetchedExrecise] = useState([]);
   const [inputTerm, setInputTerm] = useState("");
   const [displayExercise, setDisplayExercise] = useState(fetchedExercise);
- 
+ const [loading,setLoading] = useState(true)
   
 
   
   const handleSearch = () => {
     if (inputTerm === "") {
+     
       setDisplayExercise(fetchedExercise);
+      setLoading(false)
     }
+    setLoading(true)
     const searchedItem = fetchedExercise.filter(
       (exercise) =>
         exercise.name.toLowerCase().includes(inputTerm) ||
@@ -30,6 +34,7 @@ export const ExreciseProvider = ({ children }) => {
         exercise.bodyPart.toLowerCase().includes(inputTerm)
     );
     setDisplayExercise(searchedItem);
+    setLoading(false)
   };
 
  
@@ -43,15 +48,17 @@ export const ExreciseProvider = ({ children }) => {
         const { data } = await axios.request(options);
         setFetchedExrecise(data);
         setDisplayExercise(data);
+        setLoading(false)
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchExrecise(exerciseOptions);
+    fetchExrecise(exerciseOptions(import.meta.env.VITE_REACT_APP_EXERCISE));
   }, []);
   useEffect(() => {
     if (inputTerm !== "") {
+      
       handleSearch();
     }
   }, [inputTerm]);
@@ -59,7 +66,7 @@ export const ExreciseProvider = ({ children }) => {
   
 
  
-  const value = { fetchedExercise, setInputTerm, displayExercise, };
+  const value = { fetchedExercise, setInputTerm, displayExercise,loading };
   return (
     <exreciseContext.Provider value={value}>
       {children}

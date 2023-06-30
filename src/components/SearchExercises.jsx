@@ -24,24 +24,24 @@ const menu = [
 
 
 
-const SearchExercises = () => {
+const SearchExercises = ({refe}) => {
 
 const {setInputTerm} = useContext(exreciseContext)
  
   return (
-    <Box  bg="gray.100" py={16} px={[2, 6]}>
+    <Box  bg="gray.100" >
     <Container placeItems={"center"} maxW="container.lg" display={"grid"}>
-      <Heading color="#435B66" as="h2" size="xl" mb={4}>
+      <Heading  my={10} color="#435B66" as="h2" size="xl" mb={4}>
         Search Exercises
       </Heading>
-      <Input bgColor={"gray.200"} w={"100%"} placeholder="Search for an exercise..." size="sm" mb={6} onChange={(e) => setInputTerm(e.target.value.toLowerCase())} />
+      <Input my="5" transition="0.3s" className='shadow' bgColor={"gray.200"} w={"100%"} placeholder="Search for an exercise..." size="sm" mb={6} onChange={(e) => setInputTerm(e.target.value.toLowerCase())} />
      
     </Container>
 
     <Container mt={10}  maxW="container.lg">
       <Grid placeItems={"center"} templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(4, 1fr)']} gap={6}>
         {menu.map(({id,img,title}) => (
-          <MenuCard key={id} title={title}  img={img} />
+          <MenuCard key={id} title={title} refe={refe}  img={img} />
         ))}
       </Grid>
     </Container>

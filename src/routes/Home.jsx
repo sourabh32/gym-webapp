@@ -1,18 +1,16 @@
-import React from 'react'
-import Hero from '../components/Hero'
-import SearchExercises from '../components/SearchExercises'
-import ExercisesMenu from '../components/ExercisesMenu'
-import Header from '../components/Header'
+import React, { useRef } from "react";
+
+import SearchExercises from "../components/SearchExercises";
+import ExercisesMenu from "../components/ExercisesMenu";
 
 const Home = () => {
+  const exerciseMenu = useRef(null);
   return (
     <>
-    
-    <Hero />
-    <SearchExercises />
-    <ExercisesMenu />
+      <SearchExercises refe={exerciseMenu} />
+      <ExercisesMenu refe={exerciseMenu} />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

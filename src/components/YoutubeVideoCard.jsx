@@ -1,10 +1,12 @@
 import React from 'react';
 import { Box, Image, Flex, Text } from '@chakra-ui/react';
 
+
+
 const YouTubeVideoCard = ({ video }) => {
-    console.log(video.url)
+    
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <Box maxW="sm"  transition="0.3s" className='shadow' borderWidth="1px" borderRadius="lg" overflow="hidden">
         <a href={video.url} target='_blank'>
       <Image src={video.bestThumbnail.url} alt={video.title} />
 
