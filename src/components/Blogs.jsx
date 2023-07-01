@@ -19,7 +19,7 @@ const [loading,setLoading] = useState(true)
     const fetchData = async () => {
       try {
         
-        const response = await axios.request(blogOptions(search));
+        const response = await axios.request(blogOptions(search,import.meta.env.VITE_REACT_APP_EXERCISE));
         const data = response.data;
         
         setBlogs(data.data.organic_results);

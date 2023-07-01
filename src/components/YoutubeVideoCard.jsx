@@ -1,12 +1,15 @@
 import React from 'react';
 import { Box, Image, Flex, Text } from '@chakra-ui/react';
-
-
+import {motion} from "framer-motion"
+const AnimatedBox = motion(Box)
 
 const YouTubeVideoCard = ({ video }) => {
     
   return (
-    <Box maxW="sm"  transition="0.3s" className='shadow' borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <AnimatedBox
+    initial={{ y: 100, opacity: 0 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    maxW="sm"  transition="0.3s" className='shadow' borderWidth="1px" borderRadius="lg" overflow="hidden">
         <a href={video.url} target='_blank'>
       <Image src={video.bestThumbnail.url} alt={video.title} />
 
@@ -29,7 +32,7 @@ const YouTubeVideoCard = ({ video }) => {
         </Text>
       </Box>
       </a>
-    </Box>
+    </AnimatedBox>
   );
 };
 

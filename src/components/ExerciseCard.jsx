@@ -2,11 +2,17 @@ import { Box, Image, Text, Badge } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import muscle from "../assets/muscle.png";
+import {motion} from "framer-motion"
 
+const AnimatedImage = motion(Image);
+const AnimatedBox = motion(Box);
 const ExerciseCard = ({ name, img, bodyPart, equipment, id }) => {
   return (
     <Link to={`/exercise/${id}`}>
-      <Box
+      <AnimatedBox
+ initial={{ y:100,opacity: 0 }}
+ whileInView={{y:0 ,opacity: 1 }}
+
         position="relative"
         borderRadius={10}
         transition="0.3s"
@@ -15,10 +21,11 @@ const ExerciseCard = ({ name, img, bodyPart, equipment, id }) => {
         w="full"
         
       >
-        <Image
+        <AnimatedImage
           borderRadius={10}
           style={{ aspectRatio: '16/9',loading: "lazy"}  }
-          
+          initial={{ opacity: 0 }}
+ whileInView={{ opacity: 1 }}
           h={[60,40]}
           src={img ? img : muscle}
           alt="Exercise Image"
@@ -66,7 +73,7 @@ const ExerciseCard = ({ name, img, bodyPart, equipment, id }) => {
         >
           {equipment}
         </Badge>
-      </Box>
+      </AnimatedBox>
     </Link>
   );
 };

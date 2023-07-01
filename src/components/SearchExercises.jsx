@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react'
-import {Box,Button,Container,HStack,Heading,Input,Image, Square, Grid} from "@chakra-ui/react"
+import React, { useContext } from 'react'
+import {Box,Container,Heading,Input,Grid} from "@chakra-ui/react"
+import {motion} from "framer-motion"
 import thigh from "../assets/thigh.png"
 import bicep from "../assets/bicep.png"
 import chest from "../assets/chest.png"
@@ -23,6 +24,8 @@ const menu = [
   ];
 
 
+  const AnimatedInput = motion(Input);
+
 
 const SearchExercises = ({refe}) => {
 
@@ -34,7 +37,8 @@ const {setInputTerm} = useContext(exreciseContext)
       <Heading  my={10} color="#435B66" as="h2" size="xl" mb={4}>
         Search Exercises
       </Heading>
-      <Input my="5" transition="0.3s" className='shadow' bgColor={"gray.200"} w={"100%"} placeholder="Search for an exercise..." size="sm" mb={6} onChange={(e) => setInputTerm(e.target.value.toLowerCase())} />
+      <AnimatedInput  initial={{ y:-100,opacity: 0 }}
+    whileInView={{y:0 ,opacity: 1 }} my="5" transition="0.3s" className='shadow' bgColor={"gray.200"} w={"100%"} placeholder="Search for an exercise..." size="sm" mb={6} onChange={(e) => setInputTerm(e.target.value.toLowerCase())} />
      
     </Container>
 
