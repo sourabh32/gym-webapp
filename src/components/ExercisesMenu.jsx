@@ -14,7 +14,7 @@ const {loading,displayExercise} = useContext(exreciseContext)
           <SpinnerComp />
         </Box>
         ): displayExercise.length >0 ?( <Box h={ 'auto'} bg="gray.100" py={16} px={[2, 6]}>
-        <Heading mb={"10"} color="#435B66" textAlign={"center"}>Showing Exercises...</Heading>
+        <Heading mb={"10"}   fontFamily={"poppins"} color="#435B66" textAlign={"center"}>Showing Exercises...</Heading>
           <Container  gap={10} display={"grid"} gridTemplateColumns={["repeat(1,1fr)","repeat(2,1fr)","repeat(4,1fr)"]}  maxW="container.lg">
           
               {

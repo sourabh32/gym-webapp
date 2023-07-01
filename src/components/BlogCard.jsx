@@ -9,7 +9,7 @@ const AnimatedStack = motion(HStack)
 const BlogCard = ({url,desc,title}) => {
   return (
     <AnimatedStack
-    initial={{ y: 100, opacity: 0 }}
+    initial={{ y: 50, opacity: 0 }}
     whileInView={{ y: 0, opacity: 1 }}
     
     className='shadow' transition="0.3s"    borderWidth="1px" borderRadius="md" p={4} mb={4}>

@@ -55,7 +55,7 @@ const ExerciseDetail = () => {
                 {exercise[0].name}
               </Text>
               <AnimatedImage
-                initial={{ y: -100, opacity: 0 }}
+                initial={{ y: -20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition="0.3s"
                 className="shadow"

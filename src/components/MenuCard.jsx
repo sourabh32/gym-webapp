@@ -14,7 +14,7 @@ const MenuCard = ({ img, title, refe }) => {
   };
   return (
     <AnimatedBox
-    initial={{ y:100,opacity: 0 }}
+    initial={{ y:50,opacity: 0 }}
     whileInView={{y:0 ,opacity: 1 }}
  
       p={5}

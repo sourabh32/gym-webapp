@@ -8,7 +8,8 @@ export const exreciseContext = createContext({
   displayExercise: [],
   exerciseToDisplay:[],
   exerciseId:0,
-  loading:true
+  loading:true,
+  filterExercises:()=>{}
 });
 
 export const ExreciseProvider = ({ children }) => {
@@ -18,24 +19,43 @@ export const ExreciseProvider = ({ children }) => {
  const [loading,setLoading] = useState(true)
   
 
+
+
+ const filterExercises = () => {
+  if (inputTerm === "") {
+    setDisplayExercise(fetchedExercise);
+    setLoading(false);
+    return;
+  }
+  setLoading(true);
+  const searchedItem = fetchedExercise.filter(
+    (exercise) =>
+      exercise.name.toLowerCase().includes(inputTerm) ||
+      exercise.target.toLowerCase().includes(inputTerm) ||
+      exercise.equipment.toLowerCase().includes(inputTerm) ||
+      exercise.bodyPart.toLowerCase().includes(inputTerm)
+  );
+  setDisplayExercise(searchedItem);
+  setLoading(false);
+};
   
-  const handleSearch = () => {
-    if (inputTerm === "") {
+  // const handleSearch = () => {
+  //   if (inputTerm === "") {
      
-      setDisplayExercise(fetchedExercise);
-      setLoading(false)
-    }
-    setLoading(true)
-    const searchedItem = fetchedExercise.filter(
-      (exercise) =>
-        exercise.name.toLowerCase().includes(inputTerm) ||
-        exercise.target.toLowerCase().includes(inputTerm) ||
-        exercise.equipment.toLowerCase().includes(inputTerm) ||
-        exercise.bodyPart.toLowerCase().includes(inputTerm)
-    );
-    setDisplayExercise(searchedItem);
-    setLoading(false)
-  };
+  //     setDisplayExercise(fetchedExercise);
+  //     setLoading(false)
+  //   }
+  //   setLoading(true)
+  //   const searchedItem = fetchedExercise.filter(
+  //     (exercise) =>
+  //       exercise.name.toLowerCase().includes(inputTerm) ||
+  //       exercise.target.toLowerCase().includes(inputTerm) ||
+  //       exercise.equipment.toLowerCase().includes(inputTerm) ||
+  //       exercise.bodyPart.toLowerCase().includes(inputTerm)
+  //   );
+  //   setDisplayExercise(searchedItem);
+  //   setLoading(false)
+  // };
 
  
 
@@ -56,17 +76,12 @@ export const ExreciseProvider = ({ children }) => {
 
     fetchExrecise(exerciseOptions(import.meta.env.VITE_REACT_APP_EXERCISE));
   }, []);
-  useEffect(() => {
-    if (inputTerm !== "") {
-      
-      handleSearch();
-    }
-  }, [inputTerm]);
+ 
 
   
 
  
-  const value = { fetchedExercise, setInputTerm, displayExercise,loading };
+  const value = { fetchedExercise, setInputTerm, displayExercise,loading,filterExercises };
   return (
     <exreciseContext.Provider value={value}>
       {children}

@@ -10,7 +10,7 @@ const ExerciseCard = ({ name, img, bodyPart, equipment, id }) => {
   return (
     <Link to={`/exercise/${id}`}>
       <AnimatedBox
- initial={{ y:100,opacity: 0 }}
+ initial={{ y:50,opacity: 0 }}
  whileInView={{y:0 ,opacity: 1 }}
 
         position="relative"
@@ -24,8 +24,8 @@ const ExerciseCard = ({ name, img, bodyPart, equipment, id }) => {
         <AnimatedImage
           borderRadius={10}
           style={{ aspectRatio: '16/9',loading: "lazy"}  }
-          initial={{ opacity: 0 }}
- whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0.8 }}
+         whileInView={{ opacity: 1 }}
           h={[60,40]}
           src={img ? img : muscle}
           alt="Exercise Image"
@@ -51,6 +51,7 @@ const ExerciseCard = ({ name, img, bodyPart, equipment, id }) => {
           {name}
         </Text>
         <Badge
+          fontFamily={"poppins"}
           variant="subtle"
           colorScheme="purple"
           position="absolute"
@@ -65,6 +66,7 @@ const ExerciseCard = ({ name, img, bodyPart, equipment, id }) => {
           {bodyPart}
         </Badge>
         <Badge
+          fontFamily={"poppins"}
           variant="subtle"
           colorScheme="green"
           position="absolute"

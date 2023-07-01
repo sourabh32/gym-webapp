@@ -7,7 +7,7 @@ const YouTubeVideoCard = ({ video }) => {
     
   return (
     <AnimatedBox
-    initial={{ y: 100, opacity: 0 }}
+    initial={{ y: 50, opacity: 0 }}
     whileInView={{ y: 0, opacity: 1 }}
     maxW="sm"  transition="0.3s" className='shadow' borderWidth="1px" borderRadius="lg" overflow="hidden">
         <a href={video.url} target='_blank'>
