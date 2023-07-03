@@ -37,7 +37,7 @@ const [loading,setLoading] = useState(true)
   return (
     <Box  w="full">
 
-      <Heading color="#435B66" mx={5}  my={5} fontFamily={"poppins"} >Related article's</Heading>
+      <Heading color="#435B66" mx={5}  mb="2" fontFamily={"poppins"} >Related article's</Heading>
 
 
 

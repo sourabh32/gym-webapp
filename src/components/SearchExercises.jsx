@@ -36,8 +36,6 @@ const AnimatedInput = motion(Input);
 const SearchExercises = ({ refe }) => {
   const { setInputTerm, filterExercises } = useContext(exreciseContext);
   const handleClick = () => {
-    filterExercises()
-
     refe.current.scrollIntoView({ behavior: "smooth" });
   };
 

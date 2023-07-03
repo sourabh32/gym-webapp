@@ -1,4 +1,4 @@
-import { Box, Container, Heading } from '@chakra-ui/react'
+import { Box, Container, Heading,Text } from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import ExerciseCard from './ExerciseCard'
 
@@ -23,7 +23,10 @@ const {loading,displayExercise} = useContext(exreciseContext)
            
           </Container>
       </Box>):(
-      <Text>Api request's exhausted 😭</Text>)
+        <Box h="100vh" display={"grid"} placeContent={"center"} bg="gray.100"  w="100%">
+          <Text>Api request's exhausted 😭</Text>
+        </Box>)
+      
       }
  
     </div>

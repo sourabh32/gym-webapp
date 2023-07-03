@@ -6,15 +6,14 @@ import { motion } from "framer-motion";
 
 const AnimatedBox = motion(Box);
 const MenuCard = ({ img, title, refe }) => {
-  const { setInputTerm } = useContext(exreciseContext);
+  const { setInputTerm,filterExercises } = useContext(exreciseContext);
   const handleClick = () => {
     setInputTerm(title);
-
     refe.current.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <AnimatedBox
-    initial={{ y:50,opacity: 0 }}
+    initial={{ y:-50,opacity: 0.5 }}
     whileInView={{y:0 ,opacity: 1 }}
  
       p={5}

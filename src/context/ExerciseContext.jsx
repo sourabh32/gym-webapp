@@ -57,7 +57,9 @@ export const ExreciseProvider = ({ children }) => {
   //   setLoading(false)
   // };
 
- 
+ useEffect(()=>{
+filterExercises()
+ },[inputTerm])
 
  
 
